@@ -55,7 +55,7 @@ public final class ShebangUtils {
      */
     public static String getInterpriterName(String line) {
         if (line == null || !isShebang(line)) {
-            return "";
+            return ""; // NOI18N
         }
 
         String path = removeShebang(line);

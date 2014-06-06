@@ -61,7 +61,7 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
-        // check all mime type
+        // check all mime types
         for (MimeTypes mimeType : MimeTypes.values()) {
             if (mimeType.isThis(interpriterName)) {
                 return mimeType.getMiMeType();
@@ -74,7 +74,7 @@ public final class NoExtMIMEResolver extends MIMEResolver {
      * Get first line from FileObject.
      *
      * @param fo FileObject
-     * @return empty string(i.e. "") if some problem isThis occurred, first line
+     * @return empty string(i.e. "") if some problems are occurred, first line
      * otherwise
      */
     private String getFirstLine(FileObject fo) {
