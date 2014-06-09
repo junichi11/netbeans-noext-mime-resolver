@@ -70,9 +70,9 @@ public class NoExtMIMEResolverTest extends NbTestCase {
         NoExtMIMEResolver resolver = new NoExtMIMEResolver();
 
         // supported
-        assertEquals(MimeTypes.SHELL.getMiMeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_sh")));
-        assertEquals(MimeTypes.SHELL.getMiMeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_bash")));
-        assertEquals(MimeTypes.SHELL.getMiMeType(), resolver.findMIMEType(rootDirectory.getFileObject("bin_bash")));
+        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_sh")));
+        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_bash")));
+        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("bin_bash")));
 
         // unsupported
         assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject("unsupported")));
