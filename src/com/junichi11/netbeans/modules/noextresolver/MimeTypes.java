@@ -23,21 +23,26 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author junichi11
  */
 public enum MimeTypes {
 
-    SHELL("text/sh") { // NOI18N
-                @Override
-                public boolean isThis(String interpreter) {
-                    return interpreter.equals("bash") // NOI18N
-                    || interpreter.equals("sh"); // NOI18N
-                }
+    SHELL("text/sh"), // NOI18N
+    RUBY("text/x-ruby"); // NOI18N
 
-            };
     private final String mimeType;
+    private static final Map<String, MimeTypes> TYPES = new HashMap<String, MimeTypes>();
+
+    static {
+        TYPES.put("bash", SHELL); // NOI18N
+        TYPES.put("sh", SHELL); // NOI18N
+        TYPES.put("ruby", RUBY); // NOI18N
+    }
 
     private MimeTypes(String mimeType) {
         this.mimeType = mimeType;
@@ -47,6 +52,8 @@ public enum MimeTypes {
         return mimeType;
     }
 
-    public abstract boolean isThis(String line);
+    public static MimeTypes valueOfInterpreter(String interpreter) {
+        return TYPES.get(interpreter);
+    }
 
 }

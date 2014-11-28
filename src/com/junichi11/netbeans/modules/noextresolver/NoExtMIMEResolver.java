@@ -63,11 +63,9 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
-        // check all mime types
-        for (MimeTypes mimeType : MimeTypes.values()) {
-            if (mimeType.isThis(interpriterName)) {
-                return mimeType.getMimeType();
-            }
+        MimeTypes mimeType = MimeTypes.valueOfInterpreter(interpriterName);
+        if (mimeType != null) {
+            return mimeType.getMimeType();
         }
         return null;
     }
