@@ -45,8 +45,10 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
+        // dot file : file name is empty and ext is not empty
         String ext = fo.getExt();
-        if (!ext.isEmpty()) {
+        String name = fo.getName();
+        if (!name.isEmpty() && !ext.isEmpty()) {
             return null;
         }
 
@@ -64,7 +66,7 @@ public final class NoExtMIMEResolver extends MIMEResolver {
         // check all mime types
         for (MimeTypes mimeType : MimeTypes.values()) {
             if (mimeType.isThis(interpriterName)) {
-                return mimeType.getMiMeType();
+                return mimeType.getMimeType();
             }
         }
         return null;

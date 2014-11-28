@@ -43,7 +43,7 @@ public enum MimeTypes {
         this.mimeType = mimeType;
     }
 
-    public String getMiMeType() {
+    public String getMimeType() {
         return mimeType;
     }
 
