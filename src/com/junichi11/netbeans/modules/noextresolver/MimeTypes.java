@@ -33,7 +33,8 @@ import java.util.Map;
 public enum MimeTypes {
 
     SHELL("text/sh"), // NOI18N
-    RUBY("text/x-ruby"); // NOI18N
+    RUBY("text/x-ruby"), // NOI18N
+    JS("text/javascript"); // NOI18N
 
     private final String mimeType;
     private static final Map<String, MimeTypes> TYPES = new HashMap<String, MimeTypes>();
@@ -42,6 +43,7 @@ public enum MimeTypes {
         TYPES.put("bash", SHELL); // NOI18N
         TYPES.put("sh", SHELL); // NOI18N
         TYPES.put("ruby", RUBY); // NOI18N
+        TYPES.put("node", JS); // NOI18N
     }
 
     private MimeTypes(String mimeType) {

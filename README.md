@@ -11,8 +11,10 @@ Return proper mime type for file from shebang line if file extension is empty. (
 
 ## Supported type
 
-- sh
-- bash
+- sh (text/sh)
+- bash (text/sh)
+- ruby (text/x-ruby)
+- node (text/javascript)
 
 If you have requests, please submit them to github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
 
