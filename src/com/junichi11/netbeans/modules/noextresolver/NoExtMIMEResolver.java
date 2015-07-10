@@ -41,7 +41,7 @@ public final class NoExtMIMEResolver extends MIMEResolver {
 
     @Override
     public String findMIMEType(FileObject fo) {
-        if (fo.isFolder()) {
+        if (!fo.canRead() || fo.isFolder()) {
             return null;
         }
 
