@@ -37,7 +37,7 @@ public enum MimeTypes {
     JS("text/javascript"); // NOI18N
 
     private final String mimeType;
-    private static final Map<String, MimeTypes> TYPES = new HashMap<String, MimeTypes>();
+    private static final Map<String, MimeTypes> TYPES = new HashMap<>();
     public static final String[] MIME_TYPES = new String[] {
         SHELL.getMimeType(),
         RUBY.getMimeType(),
