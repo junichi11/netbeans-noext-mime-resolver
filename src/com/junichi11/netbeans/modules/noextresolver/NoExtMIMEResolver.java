@@ -39,6 +39,10 @@ import org.openide.util.lookup.ServiceProvider;
 @ServiceProvider(service = MIMEResolver.class)
 public final class NoExtMIMEResolver extends MIMEResolver {
 
+    public NoExtMIMEResolver() {
+        super(MimeTypes.MIME_TYPES);
+    }
+
     @Override
     public String findMIMEType(FileObject fo) {
         if (!fo.canRead() || fo.isFolder()) {

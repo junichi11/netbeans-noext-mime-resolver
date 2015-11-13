@@ -38,6 +38,11 @@ public enum MimeTypes {
 
     private final String mimeType;
     private static final Map<String, MimeTypes> TYPES = new HashMap<String, MimeTypes>();
+    public static final String[] MIME_TYPES = new String[] {
+        SHELL.getMimeType(),
+        RUBY.getMimeType(),
+        JS.getMimeType()
+    };
 
     static {
         TYPES.put("bash", SHELL); // NOI18N
