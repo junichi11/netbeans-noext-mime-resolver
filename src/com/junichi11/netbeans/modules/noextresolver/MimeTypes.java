@@ -34,6 +34,7 @@ public enum MimeTypes {
 
     SHELL("text/sh"), // NOI18N
     RUBY("text/x-ruby"), // NOI18N
+    PYTHON("text/x-python"), // NOI18N
     JS("text/javascript"); // NOI18N
 
     private final String mimeType;
@@ -41,6 +42,7 @@ public enum MimeTypes {
     public static final String[] MIME_TYPES = new String[] {
         SHELL.getMimeType(),
         RUBY.getMimeType(),
+        PYTHON.getMimeType(),
         JS.getMimeType()
     };
 
@@ -48,6 +50,7 @@ public enum MimeTypes {
         TYPES.put("bash", SHELL); // NOI18N
         TYPES.put("sh", SHELL); // NOI18N
         TYPES.put("ruby", RUBY); // NOI18N
+        TYPES.put("python", PYTHON); // NOI18N
         TYPES.put("node", JS); // NOI18N
     }
 
