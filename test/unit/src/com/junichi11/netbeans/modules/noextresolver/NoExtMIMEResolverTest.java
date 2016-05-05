@@ -80,6 +80,9 @@ public class NoExtMIMEResolverTest extends NbTestCase {
         // ruby
         assertEquals(MimeTypes.RUBY.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("ruby")));
 
+        // python
+        assertEquals(MimeTypes.PYTHON.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("python")));
+
         // unsupported
         assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject("unsupported")));
 

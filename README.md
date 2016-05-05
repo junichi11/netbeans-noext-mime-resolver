@@ -1,6 +1,6 @@
 # NetBeans No Extension MIME Resolver Plugin
 
-Return proper mime type for file from shebang line if file extension is empty. (e.g. myscript)
+Return a proper mime type from a shebang line of a file if the file extension is empty. (e.g. myscript)
 
 ## Example
 
@@ -14,14 +14,15 @@ Return proper mime type for file from shebang line if file extension is empty. (
 - sh (text/sh)
 - bash (text/sh)
 - ruby (text/x-ruby)
+- python (text/x-python)
 - node (text/javascript)
 
-If you have requests, please submit them to github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
+If you have some requests, please submit them to the github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
 
 ## Note
 
 This pluign doesn't provide highlight, code completion, e.t.c.
-Require plugin for specified mime-type. e.g. C/C++ plugin(sh, bash)
+Require plugins for specified mime-types. e.g. C/C++ plugin(sh, bash)
 
 ## License
 
