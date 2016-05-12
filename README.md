@@ -15,6 +15,7 @@ Return a proper mime type from a shebang line of a file if the file extension is
 - bash (text/sh)
 - ruby (text/x-ruby)
 - python (text/x-python)
+- perl (text/x-perl)
 - node (text/javascript)
 
 If you have some requests, please submit them to the github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
