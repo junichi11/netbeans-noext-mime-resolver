@@ -27,7 +27,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import org.netbeans.junit.NbTestCase;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
@@ -38,8 +37,14 @@ import org.openide.filesystems.FileUtil;
  */
 public class NoExtMIMEResolverTest extends NbTestCase {
 
+    private final FileObject rootDirectory;
+    private final NoExtMIMEResolver resolver;
+
     public NoExtMIMEResolverTest(String name) {
         super(name);
+        FileObject dataDirectory = FileUtil.toFileObject(getDataDir());
+        rootDirectory = dataDirectory.getFileObject("shebang");
+        resolver = new NoExtMIMEResolver();
     }
 
     @BeforeClass
@@ -60,33 +65,52 @@ public class NoExtMIMEResolverTest extends NbTestCase {
     public void tearDown() {
     }
 
-    /**
-     * Test of findMIMEType method, of class NoExtMIMEResolver.
-     */
-    @Test
-    public void testFindMIMEType() {
-        FileObject dataDirectory = FileUtil.toFileObject(getDataDir());
-        FileObject rootDirectory = dataDirectory.getFileObject("shebang");
-        NoExtMIMEResolver resolver = new NoExtMIMEResolver();
+    public void testShell_01() {
+        findMimeType(MimeTypes.SHELL, "env_sh");
+    }
 
-        // supported
-        // shell
-        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_sh")));
-        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("env_bash")));
-        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("bin_bash")));
-        // dotfile
-        assertEquals(MimeTypes.SHELL.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject(".bashrc")));
+    public void testShell_02() {
+        findMimeType(MimeTypes.SHELL, "env_bash");
+    }
 
-        // ruby
-        assertEquals(MimeTypes.RUBY.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("ruby")));
+    public void testShell_03() {
+        findMimeType(MimeTypes.SHELL, "bin_bash");
+    }
 
-        // python
-        assertEquals(MimeTypes.PYTHON.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject("python")));
+    public void testShell_04() {
+        findMimeType(MimeTypes.SHELL, ".bashrc");
+    }
 
-        // unsupported
-        assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject("unsupported")));
+    public void testRuby() {
+        findMimeType(MimeTypes.RUBY, "ruby");
+    }
 
-        assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject("empty")));
+    public void testPython() {
+        findMimeType(MimeTypes.PYTHON, "python");
+    }
+
+    public void testPerl_01() {
+        findMimeType(MimeTypes.PERL, "perl_01");
+    }
+
+    public void testPerl_02() {
+        findMimeType(MimeTypes.PERL, "perl_02");
+    }
+
+    public void testUnsupported_01() {
+        findMimeType(null, "unsupported");
+    }
+
+    public void testUnsupported_02() {
+        findMimeType(null, "empty");
+    }
+
+    private void findMimeType(MimeTypes mimetype, String filepath) {
+        if (mimetype == null) {
+            assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject(filepath)));
+        } else {
+            assertEquals(mimetype.getMimeType(), resolver.findMIMEType(rootDirectory.getFileObject(filepath)));
+        }
     }
 
 }
