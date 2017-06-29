@@ -97,6 +97,14 @@ public class NoExtMIMEResolverTest extends NbTestCase {
         findMimeType(MimeTypes.PERL, "perl_02");
     }
 
+    public void testGroovy_01() {
+        findMimeType(MimeTypes.GROOVY, "groovy_01");
+    }
+
+    public void testGroovy_02() {
+        findMimeType(MimeTypes.GROOVY, "groovy_02");
+    }
+
     public void testUnsupported_01() {
         findMimeType(null, "unsupported");
     }
