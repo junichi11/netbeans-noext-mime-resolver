@@ -36,7 +36,9 @@ public enum MimeTypes {
     RUBY("text/x-ruby"), // NOI18N
     PYTHON("text/x-python"), // NOI18N
     PERL("text/x-perl"), // NOI18N
-    JS("text/javascript"); // NOI18N
+    JS("text/javascript"), // NOI18N
+    GROOVY("text/x-groovy"), // NOI18N
+    ;
 
     private final String mimeType;
     private static final Map<String, MimeTypes> TYPES = new HashMap<>();
@@ -45,7 +47,8 @@ public enum MimeTypes {
         RUBY.getMimeType(),
         PYTHON.getMimeType(),
         PERL.getMimeType(),
-        JS.getMimeType()
+        JS.getMimeType(),
+        GROOVY.getMimeType(),
     };
 
     static {
@@ -55,6 +58,7 @@ public enum MimeTypes {
         TYPES.put("python", PYTHON); // NOI18N
         TYPES.put("perl", PERL); // NOI18N
         TYPES.put("node", JS); // NOI18N
+        TYPES.put("groovy", GROOVY); // NOI18N
     }
 
     private MimeTypes(String mimeType) {
