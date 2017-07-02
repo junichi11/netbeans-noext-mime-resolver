@@ -23,7 +23,7 @@ If you have some requests, please submit them to the github repository as new [i
 
 ## Note
 
-This pluign doesn't provide highlight, code completion, e.t.c.
+This pluign doesn't provide syntax highlighting, code completion, e.t.c.
 Require plugins for specified mime-types. e.g. C/C++ plugin(sh, bash)
 
 ## License
