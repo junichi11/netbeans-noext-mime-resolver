@@ -25,6 +25,7 @@ package com.junichi11.netbeans.modules.noextresolver;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.netbeans.api.annotations.common.NonNull;
 
 /**
  *
@@ -65,6 +66,7 @@ public enum MimeTypes {
         this.mimeType = mimeType;
     }
 
+    @NonNull
     public String getMimeType() {
         return mimeType;
     }
