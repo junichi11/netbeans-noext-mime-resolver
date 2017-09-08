@@ -57,6 +57,8 @@ public enum MimeTypes {
         TYPES.put("sh", SHELL); // NOI18N
         TYPES.put("ruby", RUBY); // NOI18N
         TYPES.put("python", PYTHON); // NOI18N
+        TYPES.put("python2", PYTHON); // NOI18N
+        TYPES.put("python3", PYTHON); // NOI18N
         TYPES.put("perl", PERL); // NOI18N
         TYPES.put("node", JS); // NOI18N
         TYPES.put("groovy", GROOVY); // NOI18N
