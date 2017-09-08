@@ -89,6 +89,14 @@ public class NoExtMIMEResolverTest extends NbTestCase {
         findMimeType(MimeTypes.PYTHON, "python");
     }
 
+    public void testPython2() {
+        findMimeType(MimeTypes.PYTHON, "python2");
+    }
+
+    public void testPython3() {
+        findMimeType(MimeTypes.PYTHON, "python3");
+    }
+
     public void testPerl_01() {
         findMimeType(MimeTypes.PERL, "perl_01");
     }
