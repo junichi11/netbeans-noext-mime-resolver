@@ -39,12 +39,16 @@ public final class ShebangUtils {
      *
      * @param line first line of a file
      * @return {@code true} if it's shebang format, {@code false} otherwise
+     * 
+     * @remark SConscript files are python but they are flagged with a first
+     * line like:
+     * # -*- Python -*-
      */
     public static boolean isShebang(String line) {
         if (line == null) {
             return false;
         }
-        return line.startsWith("#!"); // NOI18N
+        return line.startsWith("#"); // NOI18N
     }
 
     /**
@@ -58,6 +62,10 @@ public final class ShebangUtils {
             return ""; // NOI18N
         }
 
+        // if scons:
+        if (line.contains("Python"))
+            return "Python";
+        
         String path = removeShebang(line);
         String interpreter;
         if (path.contains(USR_BIN_ENV)) {
