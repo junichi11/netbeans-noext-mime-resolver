@@ -8,6 +8,10 @@ Return a proper mime type from a shebang line of a file if the file extension is
 #!/usr/bin/env bash
 #!/bin/bash
 ```
+## Update by mattapiroglu
+
+A small hack to make the plugin accept scons files (which start with # -*- Python -*-)
+To use this version, one should open this project with Netbeans (worked with 8.2), right click and choose create nbm. If original plugin already installed, then remove the jar from ~/.netbeans/modules/, then start netbeans, go to plugins->downloaded and remove it from there, then add the locally built one.
 
 ## Supported type
 
