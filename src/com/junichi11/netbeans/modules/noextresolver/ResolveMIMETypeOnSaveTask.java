@@ -79,7 +79,7 @@ public class ResolveMIMETypeOnSaveTask implements OnSaveTask {
             return;
         }
 
-        MimeTypes mimeType = MimeTypes.valueOfInterpreter(interpriterName);
+        MimeType mimeType = MimeType.valueOfInterpreter(interpriterName);
         if (mimeType == null){
             return;
         }

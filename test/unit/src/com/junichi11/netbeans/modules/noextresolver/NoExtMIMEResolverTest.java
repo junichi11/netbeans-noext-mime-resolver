@@ -66,51 +66,51 @@ public class NoExtMIMEResolverTest extends NbTestCase {
     }
 
     public void testShell_01() {
-        findMimeType(MimeTypes.SHELL, "env_sh");
+        findMimeType(MimeType.SHELL, "env_sh");
     }
 
     public void testShell_02() {
-        findMimeType(MimeTypes.SHELL, "env_bash");
+        findMimeType(MimeType.SHELL, "env_bash");
     }
 
     public void testShell_03() {
-        findMimeType(MimeTypes.SHELL, "bin_bash");
+        findMimeType(MimeType.SHELL, "bin_bash");
     }
 
     public void testShell_04() {
-        findMimeType(MimeTypes.SHELL, ".bashrc");
+        findMimeType(MimeType.SHELL, ".bashrc");
     }
 
     public void testRuby() {
-        findMimeType(MimeTypes.RUBY, "ruby");
+        findMimeType(MimeType.RUBY, "ruby");
     }
 
     public void testPython() {
-        findMimeType(MimeTypes.PYTHON, "python");
+        findMimeType(MimeType.PYTHON, "python");
     }
 
     public void testPython2() {
-        findMimeType(MimeTypes.PYTHON, "python2");
+        findMimeType(MimeType.PYTHON, "python2");
     }
 
     public void testPython3() {
-        findMimeType(MimeTypes.PYTHON, "python3");
+        findMimeType(MimeType.PYTHON, "python3");
     }
 
     public void testPerl_01() {
-        findMimeType(MimeTypes.PERL, "perl_01");
+        findMimeType(MimeType.PERL, "perl_01");
     }
 
     public void testPerl_02() {
-        findMimeType(MimeTypes.PERL, "perl_02");
+        findMimeType(MimeType.PERL, "perl_02");
     }
 
     public void testGroovy_01() {
-        findMimeType(MimeTypes.GROOVY, "groovy_01");
+        findMimeType(MimeType.GROOVY, "groovy_01");
     }
 
     public void testGroovy_02() {
-        findMimeType(MimeTypes.GROOVY, "groovy_02");
+        findMimeType(MimeType.GROOVY, "groovy_02");
     }
 
     public void testUnsupported_01() {
@@ -121,7 +121,7 @@ public class NoExtMIMEResolverTest extends NbTestCase {
         findMimeType(null, "empty");
     }
 
-    private void findMimeType(MimeTypes mimetype, String filepath) {
+    private void findMimeType(MimeType mimetype, String filepath) {
         if (mimetype == null) {
             assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject(filepath)));
         } else {

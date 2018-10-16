@@ -40,7 +40,7 @@ import org.openide.util.lookup.ServiceProvider;
 public final class NoExtMIMEResolver extends MIMEResolver {
 
     public NoExtMIMEResolver() {
-        super(MimeTypes.MIME_TYPES);
+        super(MimeType.MIME_TYPES);
     }
 
     @Override
@@ -67,7 +67,7 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
-        MimeTypes mimeType = MimeTypes.valueOfInterpreter(interpriterName);
+        MimeType mimeType = MimeType.valueOfInterpreter(interpriterName);
         if (mimeType != null) {
             return mimeType.getMimeType();
         }

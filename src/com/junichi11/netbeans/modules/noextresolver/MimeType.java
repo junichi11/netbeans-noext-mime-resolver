@@ -31,7 +31,7 @@ import org.netbeans.api.annotations.common.NonNull;
  *
  * @author junichi11
  */
-public enum MimeTypes {
+public enum MimeType {
 
     SHELL("text/sh"), // NOI18N
     RUBY("text/x-ruby"), // NOI18N
@@ -42,7 +42,7 @@ public enum MimeTypes {
     ;
 
     private final String mimeType;
-    private static final Map<String, MimeTypes> TYPES = new HashMap<>();
+    private static final Map<String, MimeType> TYPES = new HashMap<>();
     public static final String[] MIME_TYPES = new String[] {
         SHELL.getMimeType(),
         RUBY.getMimeType(),
@@ -64,7 +64,7 @@ public enum MimeTypes {
         TYPES.put("groovy", GROOVY); // NOI18N
     }
 
-    private MimeTypes(String mimeType) {
+    private MimeType(String mimeType) {
         this.mimeType = mimeType;
     }
 
@@ -73,7 +73,7 @@ public enum MimeTypes {
         return mimeType;
     }
 
-    public static MimeTypes valueOfInterpreter(String interpreter) {
+    public static MimeType valueOfInterpreter(String interpreter) {
         return TYPES.get(interpreter);
     }
 
