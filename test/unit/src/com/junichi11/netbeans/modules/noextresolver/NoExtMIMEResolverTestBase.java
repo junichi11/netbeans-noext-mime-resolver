@@ -35,93 +35,19 @@ import org.openide.filesystems.FileUtil;
  *
  * @author junichi11
  */
-public class NoExtMIMEResolverTest extends NbTestCase {
+public class NoExtMIMEResolverTestBase extends NbTestCase {
 
     private final FileObject rootDirectory;
     private final NoExtMIMEResolver resolver;
 
-    public NoExtMIMEResolverTest(String name) {
+    public NoExtMIMEResolverTestBase(String name, String testDataDirectoryPath) {
         super(name);
         FileObject dataDirectory = FileUtil.toFileObject(getDataDir());
-        rootDirectory = dataDirectory.getFileObject("shebang");
+        rootDirectory = dataDirectory.getFileObject(testDataDirectoryPath);
         resolver = new NoExtMIMEResolver();
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    @Override
-    public void setUp() {
-    }
-
-    @After
-    @Override
-    public void tearDown() {
-    }
-
-    public void testShell_01() {
-        findMimeType(MimeType.SHELL, "env_sh");
-    }
-
-    public void testShell_02() {
-        findMimeType(MimeType.SHELL, "env_bash");
-    }
-
-    public void testShell_03() {
-        findMimeType(MimeType.SHELL, "bin_bash");
-    }
-
-    public void testShell_04() {
-        findMimeType(MimeType.SHELL, ".bashrc");
-    }
-
-    public void testRuby() {
-        findMimeType(MimeType.RUBY, "ruby");
-    }
-
-    public void testPython() {
-        findMimeType(MimeType.PYTHON, "python");
-    }
-
-    public void testPython2() {
-        findMimeType(MimeType.PYTHON, "python2");
-    }
-
-    public void testPython3() {
-        findMimeType(MimeType.PYTHON, "python3");
-    }
-
-    public void testPerl_01() {
-        findMimeType(MimeType.PERL, "perl_01");
-    }
-
-    public void testPerl_02() {
-        findMimeType(MimeType.PERL, "perl_02");
-    }
-
-    public void testGroovy_01() {
-        findMimeType(MimeType.GROOVY, "groovy_01");
-    }
-
-    public void testGroovy_02() {
-        findMimeType(MimeType.GROOVY, "groovy_02");
-    }
-
-    public void testUnsupported_01() {
-        findMimeType(null, "unsupported");
-    }
-
-    public void testUnsupported_02() {
-        findMimeType(null, "empty");
-    }
-
-    private void findMimeType(MimeType mimetype, String filepath) {
+    protected void findMimeType(MimeType mimetype, String filepath) {
         if (mimetype == null) {
             assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject(filepath)));
         } else {

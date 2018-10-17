@@ -23,8 +23,16 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
+import com.junichi11.netbeans.modules.noextresolver.parser.ModelineParser;
+import com.junichi11.netbeans.modules.noextresolver.parser.Parser;
+import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
+import com.junichi11.netbeans.modules.noextresolver.parser.ShebanglineParser;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.filesystems.FileObject;
@@ -56,20 +64,13 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
-        // exists shebang?
         String firstLine = getFirstLine(fo);
-        if (!ShebangUtils.isShebang(firstLine)) {
-            return null;
-        }
-
-        String interpriterName = ShebangUtils.getInterpriterName(firstLine);
-        if (interpriterName == null || interpriterName.isEmpty()) {
-            return null;
-        }
-
-        MimeType mimeType = MimeType.valueOfInterpreter(interpriterName);
-        if (mimeType != null) {
-            return mimeType.getMimeType();
+        List<Parser> parsers = ParserFactory.createParsers(firstLine);
+        for (Parser parser : parsers) {
+            Parser.Result result = parser.parse().getResult();
+            if (result.getMimeType() != UNNKOWN) {
+                return result.getMimeType().getMimeType();
+            }
         }
         return null;
     }

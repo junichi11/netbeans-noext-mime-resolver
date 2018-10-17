@@ -39,6 +39,9 @@ public enum MimeType {
     PERL("text/x-perl"), // NOI18N
     JS("text/javascript"), // NOI18N
     GROOVY("text/x-groovy"), // NOI18N
+    C("text/x-c"), // NOI18N
+    CPP("text/x-c++"), // NOI18N
+    UNNKOWN(null), // NOI18N
     ;
 
     private final String mimeType;
@@ -50,6 +53,8 @@ public enum MimeType {
         PERL.getMimeType(),
         JS.getMimeType(),
         GROOVY.getMimeType(),
+        C.getMimeType(),
+        CPP.getMimeType(),
     };
 
     static {
@@ -62,6 +67,10 @@ public enum MimeType {
         TYPES.put("perl", PERL); // NOI18N
         TYPES.put("node", JS); // NOI18N
         TYPES.put("groovy", GROOVY); // NOI18N
+        TYPES.put("js", JS); // NOI18N
+        TYPES.put("javascript", JS); // NOI18N
+        TYPES.put("c", C); // NOI18N
+        TYPES.put("cpp", CPP); // NOI18N
     }
 
     private MimeType(String mimeType) {
@@ -73,8 +82,12 @@ public enum MimeType {
         return mimeType;
     }
 
-    public static MimeType valueOfInterpreter(String interpreter) {
-        return TYPES.get(interpreter);
+    public static MimeType valueOfInterpreter(String fileType) {
+        MimeType mime = TYPES.get(fileType);
+        if (mime == null) {
+            mime = UNNKOWN;
+        }
+        return mime;
     }
 
 }

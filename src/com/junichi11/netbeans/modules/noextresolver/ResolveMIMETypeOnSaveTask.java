@@ -23,8 +23,13 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
+import com.junichi11.netbeans.modules.noextresolver.parser.Parser;
+import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
 import java.beans.PropertyVetoException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,17 +75,20 @@ public class ResolveMIMETypeOnSaveTask implements OnSaveTask {
 
         Line line = NbEditorUtilities.getLine(document, 0, false);
         String text = line.getText();
-        if (!ShebangUtils.isShebang(text)) {
+        if (!ShebangUtils.isShebang(text) && !Utils.isCommentLine(text)) {
             return;
         }
 
-        String interpriterName = ShebangUtils.getInterpriterName(text);
-        if (interpriterName == null || interpriterName.isEmpty()) {
-            return;
+        MimeType mimeType = UNNKOWN;
+        List<Parser> parsers = ParserFactory.createParsers(text);
+        for (Parser parser : parsers) {
+            Parser.Result result = parser.parse().getResult();
+            if (result.getMimeType() != UNNKOWN) {
+                mimeType = result.getMimeType();
+                break;
+            }
         }
-
-        MimeType mimeType = MimeType.valueOfInterpreter(interpriterName);
-        if (mimeType == null){
+        if (mimeType == UNNKOWN) {
             return;
         }
 
