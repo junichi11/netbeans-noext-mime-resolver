@@ -24,7 +24,7 @@
 package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
-import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
+import com.junichi11.netbeans.modules.noextresolver.utils.NoMIMEResolverUtils;
 import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
 public class ModelineParser implements NoExtMIMEResolverParser {
@@ -44,7 +44,7 @@ public class ModelineParser implements NoExtMIMEResolverParser {
 
     @Override
     public ModelineParser parse() {
-        if (Utils.isCommentLine(modeline)) {
+        if (NoMIMEResolverUtils.isCommentLine(modeline)) {
             String line = modeline.replace(":", " ").trim(); // NOI18N
             String[] options = line.split(" "); // NOI18N
             for (String option : options) {
@@ -72,7 +72,7 @@ public class ModelineParser implements NoExtMIMEResolverParser {
     }
 
     static boolean support(String line) {
-        return Utils.isCommentLine(line)
+        return NoMIMEResolverUtils.isCommentLine(line)
                 && (line.contains(VIM) || line.contains(VI) || line.contains(EX));
     }
 

@@ -25,7 +25,7 @@ package com.junichi11.netbeans.modules.noextresolver;
 
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
-import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
+import com.junichi11.netbeans.modules.noextresolver.utils.NoMIMEResolverUtils;
 import java.beans.PropertyVetoException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -74,7 +74,7 @@ public class ResolveMIMETypeOnSaveTask implements OnSaveTask {
 
         Line line = NbEditorUtilities.getLine(document, 0, false);
         String text = line.getText();
-        if (!ShebangUtils.isShebang(text) && !Utils.isCommentLine(text)) {
+        if (!ShebangUtils.isShebang(text) && !NoMIMEResolverUtils.isCommentLine(text)) {
             return;
         }
 

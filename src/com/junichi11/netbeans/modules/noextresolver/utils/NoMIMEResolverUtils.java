@@ -27,14 +27,14 @@ package com.junichi11.netbeans.modules.noextresolver.utils;
  *
  * @author junichi11
  */
-public final class Utils {
+public final class NoMIMEResolverUtils {
 
     private static final String MULTI_START = "/*"; // NOI18N
     private static final String MULTI_END = "*/"; // NOI18N
     private static final String ONELINE_HASH = "#"; // NOI18N
     private static final String ONELINE_DOUBLE_SLASH = "//"; // NOI18N
 
-    private Utils() {
+    private NoMIMEResolverUtils() {
     }
 
     public static boolean isCommentLine(String line) {
