@@ -23,7 +23,8 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
-import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
+import static com.junichi11.netbeans.modules.noextresolver.api.MimeType.UNNKOWN;
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
 import com.junichi11.netbeans.modules.noextresolver.utils.Utils;

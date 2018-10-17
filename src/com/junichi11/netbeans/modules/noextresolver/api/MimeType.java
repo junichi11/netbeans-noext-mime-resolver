@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.junichi11.netbeans.modules.noextresolver;
+package com.junichi11.netbeans.modules.noextresolver.api;
 
 import java.util.HashMap;
 import java.util.Map;

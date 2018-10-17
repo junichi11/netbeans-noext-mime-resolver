@@ -23,6 +23,7 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
 import org.netbeans.junit.NbTestCase;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;

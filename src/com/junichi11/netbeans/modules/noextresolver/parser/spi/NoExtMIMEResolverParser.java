@@ -23,8 +23,8 @@
  */
 package com.junichi11.netbeans.modules.noextresolver.parser.spi;
 
-import com.junichi11.netbeans.modules.noextresolver.MimeType;
-import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
+import static com.junichi11.netbeans.modules.noextresolver.api.MimeType.UNNKOWN;
 
 /**
  *

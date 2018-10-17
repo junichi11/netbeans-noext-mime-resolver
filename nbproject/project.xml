@@ -159,7 +159,10 @@
                     </test-dependency>
                 </test-type>
             </test-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>com.junichi11.netbeans.modules.noextresolver.api</package>
+                <package>com.junichi11.netbeans.modules.noextresolver.parser.spi</package>
+            </public-packages>
         </data>
     </configuration>
 </project>

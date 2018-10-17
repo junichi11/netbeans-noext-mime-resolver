@@ -23,6 +23,8 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
+
 /**
  *
  * @author junichi11
