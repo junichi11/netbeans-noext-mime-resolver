@@ -39,6 +39,10 @@ If you have some requests, please submit them to the github repository as new [i
 This pluign doesn't provide syntax highlighting, code completion, e.t.c.
 Require plugins for specified mime-types. e.g. C/C++ plugin(sh, bash)
 
+## Donation
+
+<a href="https://www.patreon.com/junichi11"><img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" height="50"></a>
+
 ## License
 
 The MIT license
