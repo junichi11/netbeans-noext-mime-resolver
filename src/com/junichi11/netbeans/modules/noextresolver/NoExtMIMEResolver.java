@@ -24,14 +24,9 @@
 package com.junichi11.netbeans.modules.noextresolver;
 
 import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
-import com.junichi11.netbeans.modules.noextresolver.parser.ModelineParser;
 import com.junichi11.netbeans.modules.noextresolver.parser.Parser;
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
-import com.junichi11.netbeans.modules.noextresolver.parser.ShebanglineParser;
-import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
-import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
