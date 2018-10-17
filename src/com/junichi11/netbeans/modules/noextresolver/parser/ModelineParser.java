@@ -41,7 +41,7 @@ public class ModelineParser implements Parser {
     @Override
     public ModelineParser parse() {
         if (Utils.isCommentLine(modeline)) {
-            String line = modeline.replace(":", ""); // NOI18N
+            String line = modeline.replace(":", " ").trim(); // NOI18N
             String[] options = line.split(" "); // NOI18N
             for (String option : options) {
                 if (isFileTypeOption(option)) {

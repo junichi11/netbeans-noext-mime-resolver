@@ -33,6 +33,10 @@ public class NoExtMIMEResolverModelineTest extends NoExtMIMEResolverTestBase {
         super(name, "modeline");
     }
 
+    public void testJs_01() {
+        findMimeType(MimeType.JS, "js");
+    }
+
     public void testC_01() {
         findMimeType(MimeType.C, "c");
     }
