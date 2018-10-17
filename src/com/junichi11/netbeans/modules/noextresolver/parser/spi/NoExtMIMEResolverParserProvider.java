@@ -38,10 +38,10 @@ public interface NoExtMIMEResolverParserProvider {
     boolean support(String line);
 
     /**
-     * Create the parser.
+     * Get the parser.
      *
      * @param line the first line of the file
      * @return the parser
      */
-    NoExtMIMEResolverParser create(String line);
+    NoExtMIMEResolverParser getParser(String line);
 }

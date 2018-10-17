@@ -37,7 +37,7 @@ public class ModelineParserProvider implements NoExtMIMEResolverParserProvider {
     }
 
     @Override
-    public NoExtMIMEResolverParser create(String line) {
+    public NoExtMIMEResolverParser getParser(String line) {
         return new ModelineParser(line);
     }
 

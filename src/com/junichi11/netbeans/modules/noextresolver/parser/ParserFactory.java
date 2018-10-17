@@ -46,7 +46,7 @@ public final class ParserFactory {
             if (!provider.support(line)) {
                 continue;
             }
-            NoExtMIMEResolverParser parser = provider.create(line);
+            NoExtMIMEResolverParser parser = provider.getParser(line);
             if (parser == null) {
                 continue;
             }

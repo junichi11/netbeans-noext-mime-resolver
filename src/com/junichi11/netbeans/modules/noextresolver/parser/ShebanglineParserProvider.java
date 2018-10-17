@@ -37,7 +37,7 @@ public class ShebanglineParserProvider implements NoExtMIMEResolverParserProvide
     }
 
     @Override
-    public NoExtMIMEResolverParser create(String line) {
+    public NoExtMIMEResolverParser getParser(String line) {
         return new ShebanglineParser(line);
     }
 
