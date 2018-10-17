@@ -23,10 +23,7 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
 import org.netbeans.junit.NbTestCase;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
@@ -35,93 +32,19 @@ import org.openide.filesystems.FileUtil;
  *
  * @author junichi11
  */
-public class NoExtMIMEResolverTest extends NbTestCase {
+public class NoExtMIMEResolverTestBase extends NbTestCase {
 
     private final FileObject rootDirectory;
     private final NoExtMIMEResolver resolver;
 
-    public NoExtMIMEResolverTest(String name) {
+    public NoExtMIMEResolverTestBase(String name, String testDataDirectoryPath) {
         super(name);
         FileObject dataDirectory = FileUtil.toFileObject(getDataDir());
-        rootDirectory = dataDirectory.getFileObject("shebang");
+        rootDirectory = dataDirectory.getFileObject(testDataDirectoryPath);
         resolver = new NoExtMIMEResolver();
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    @Override
-    public void setUp() {
-    }
-
-    @After
-    @Override
-    public void tearDown() {
-    }
-
-    public void testShell_01() {
-        findMimeType(MimeTypes.SHELL, "env_sh");
-    }
-
-    public void testShell_02() {
-        findMimeType(MimeTypes.SHELL, "env_bash");
-    }
-
-    public void testShell_03() {
-        findMimeType(MimeTypes.SHELL, "bin_bash");
-    }
-
-    public void testShell_04() {
-        findMimeType(MimeTypes.SHELL, ".bashrc");
-    }
-
-    public void testRuby() {
-        findMimeType(MimeTypes.RUBY, "ruby");
-    }
-
-    public void testPython() {
-        findMimeType(MimeTypes.PYTHON, "python");
-    }
-
-    public void testPython2() {
-        findMimeType(MimeTypes.PYTHON, "python2");
-    }
-
-    public void testPython3() {
-        findMimeType(MimeTypes.PYTHON, "python3");
-    }
-
-    public void testPerl_01() {
-        findMimeType(MimeTypes.PERL, "perl_01");
-    }
-
-    public void testPerl_02() {
-        findMimeType(MimeTypes.PERL, "perl_02");
-    }
-
-    public void testGroovy_01() {
-        findMimeType(MimeTypes.GROOVY, "groovy_01");
-    }
-
-    public void testGroovy_02() {
-        findMimeType(MimeTypes.GROOVY, "groovy_02");
-    }
-
-    public void testUnsupported_01() {
-        findMimeType(null, "unsupported");
-    }
-
-    public void testUnsupported_02() {
-        findMimeType(null, "empty");
-    }
-
-    private void findMimeType(MimeTypes mimetype, String filepath) {
+    protected void findMimeType(MimeType mimetype, String filepath) {
         if (mimetype == null) {
             assertEquals(null, resolver.findMIMEType(rootDirectory.getFileObject(filepath)));
         } else {

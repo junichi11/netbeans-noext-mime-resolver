@@ -23,8 +23,11 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
+import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import com.junichi11.netbeans.modules.noextresolver.utils.NoMIMEResolverUtils;
 import java.beans.PropertyVetoException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +42,7 @@ import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.RequestProcessor;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
 /**
  *
@@ -70,22 +74,25 @@ public class ResolveMIMETypeOnSaveTask implements OnSaveTask {
 
         Line line = NbEditorUtilities.getLine(document, 0, false);
         String text = line.getText();
-        if (!ShebangUtils.isShebang(text)) {
+        if (!ShebangUtils.isShebang(text) && !NoMIMEResolverUtils.isCommentLine(text)) {
             return;
         }
 
-        String interpriterName = ShebangUtils.getInterpriterName(text);
-        if (interpriterName == null || interpriterName.isEmpty()) {
-            return;
+        String mimeType = null;
+        List<NoExtMIMEResolverParser> parsers = ParserFactory.createParsers(text);
+        for (NoExtMIMEResolverParser parser : parsers) {
+            NoExtMIMEResolverParser.Result result = parser.parse().getResult();
+            if (result.getMimeType() != null) {
+                mimeType = result.getMimeType();
+                break;
+            }
         }
-
-        MimeTypes mimeType = MimeTypes.valueOfInterpreter(interpriterName);
-        if (mimeType == null){
+        if (mimeType == null) {
             return;
         }
 
         String originalMimeType = NbEditorUtilities.getMimeType(document);
-        if(mimeType.getMimeType().equals(originalMimeType)) {
+        if(mimeType.equals(originalMimeType)) {
             return;
         }
 

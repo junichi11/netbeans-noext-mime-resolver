@@ -1,12 +1,21 @@
 # NetBeans No Extension MIME Resolver Plugin
 
-Return a proper mime type from a shebang line of a file if the file extension is empty. (e.g. myscript)
+Return a proper mime type from a shebang line or modeline of a file if the file extension is empty. (e.g. myscript)
 
 ## Example
+
+### Shebang line
 
 ```sh
 #!/usr/bin/env bash
 #!/bin/bash
+```
+
+### Modeline
+
+```
+// vi:set ft=cpp:
+/* vi:set filetype=cpp: */
 ```
 
 ## Supported type
@@ -16,8 +25,12 @@ Return a proper mime type from a shebang line of a file if the file extension is
 - ruby (text/x-ruby)
 - python (text/x-python)
 - perl (text/x-perl)
+- js (text/javascript)
+- javascript (text/javascript)
 - node (text/javascript)
 - groovy (text/x-groovy)
+- c (text/x-c)
+- cpp (text/x-c++)
 
 If you have some requests, please submit them to the github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
 
@@ -25,6 +38,10 @@ If you have some requests, please submit them to the github repository as new [i
 
 This pluign doesn't provide syntax highlighting, code completion, e.t.c.
 Require plugins for specified mime-types. e.g. C/C++ plugin(sh, bash)
+
+## Donation
+
+<a href="https://www.patreon.com/junichi11"><img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" height="50"></a>
 
 ## License
 

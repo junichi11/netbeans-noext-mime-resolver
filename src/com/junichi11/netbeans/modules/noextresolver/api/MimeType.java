@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.junichi11.netbeans.modules.noextresolver;
+package com.junichi11.netbeans.modules.noextresolver.api;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ import org.netbeans.api.annotations.common.NonNull;
  *
  * @author junichi11
  */
-public enum MimeTypes {
+public enum MimeType {
 
     SHELL("text/sh"), // NOI18N
     RUBY("text/x-ruby"), // NOI18N
@@ -39,10 +39,13 @@ public enum MimeTypes {
     PERL("text/x-perl"), // NOI18N
     JS("text/javascript"), // NOI18N
     GROOVY("text/x-groovy"), // NOI18N
+    C("text/x-c"), // NOI18N
+    CPP("text/x-c++"), // NOI18N
+    UNNKOWN(null), // NOI18N
     ;
 
     private final String mimeType;
-    private static final Map<String, MimeTypes> TYPES = new HashMap<>();
+    private static final Map<String, MimeType> TYPES = new HashMap<>();
     public static final String[] MIME_TYPES = new String[] {
         SHELL.getMimeType(),
         RUBY.getMimeType(),
@@ -50,6 +53,8 @@ public enum MimeTypes {
         PERL.getMimeType(),
         JS.getMimeType(),
         GROOVY.getMimeType(),
+        C.getMimeType(),
+        CPP.getMimeType(),
     };
 
     static {
@@ -62,9 +67,13 @@ public enum MimeTypes {
         TYPES.put("perl", PERL); // NOI18N
         TYPES.put("node", JS); // NOI18N
         TYPES.put("groovy", GROOVY); // NOI18N
+        TYPES.put("js", JS); // NOI18N
+        TYPES.put("javascript", JS); // NOI18N
+        TYPES.put("c", C); // NOI18N
+        TYPES.put("cpp", CPP); // NOI18N
     }
 
-    private MimeTypes(String mimeType) {
+    private MimeType(String mimeType) {
         this.mimeType = mimeType;
     }
 
@@ -73,8 +82,12 @@ public enum MimeTypes {
         return mimeType;
     }
 
-    public static MimeTypes valueOfInterpreter(String interpreter) {
-        return TYPES.get(interpreter);
+    public static MimeType valueOfFileType(String fileType) {
+        MimeType mime = TYPES.get(fileType);
+        if (mime == null) {
+            mime = UNNKOWN;
+        }
+        return mime;
     }
 
 }

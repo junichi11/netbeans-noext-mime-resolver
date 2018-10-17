@@ -23,13 +23,16 @@
  */
 package com.junichi11.netbeans.modules.noextresolver;
 
-import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
+import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.MIMEResolver;
 import org.openide.util.lookup.ServiceProvider;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
 /**
  * MIMEResolver for no extension file.
@@ -40,7 +43,7 @@ import org.openide.util.lookup.ServiceProvider;
 public final class NoExtMIMEResolver extends MIMEResolver {
 
     public NoExtMIMEResolver() {
-        super(MimeTypes.MIME_TYPES);
+        super(MimeType.MIME_TYPES);
     }
 
     @Override
@@ -56,20 +59,13 @@ public final class NoExtMIMEResolver extends MIMEResolver {
             return null;
         }
 
-        // exists shebang?
         String firstLine = getFirstLine(fo);
-        if (!ShebangUtils.isShebang(firstLine)) {
-            return null;
-        }
-
-        String interpriterName = ShebangUtils.getInterpriterName(firstLine);
-        if (interpriterName == null || interpriterName.isEmpty()) {
-            return null;
-        }
-
-        MimeTypes mimeType = MimeTypes.valueOfInterpreter(interpriterName);
-        if (mimeType != null) {
-            return mimeType.getMimeType();
+        List<NoExtMIMEResolverParser> parsers = ParserFactory.createParsers(firstLine);
+        for (NoExtMIMEResolverParser parser : parsers) {
+            NoExtMIMEResolverParser.Result result = parser.parse().getResult();
+            if (result.getMimeType() != null) {
+                return result.getMimeType();
+            }
         }
         return null;
     }
