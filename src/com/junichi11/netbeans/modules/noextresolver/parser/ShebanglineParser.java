@@ -64,8 +64,8 @@ public class ShebanglineParser implements NoExtMIMEResolverParser {
         }
 
         @Override
-        public MimeType getMimeType() {
-            return mimeType;
+        public String getMimeType() {
+            return mimeType.getMimeType();
         }
 
     }

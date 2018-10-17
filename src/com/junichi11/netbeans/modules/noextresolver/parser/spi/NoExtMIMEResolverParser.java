@@ -23,8 +23,8 @@
  */
 package com.junichi11.netbeans.modules.noextresolver.parser.spi;
 
-import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
 import static com.junichi11.netbeans.modules.noextresolver.api.MimeType.UNNKOWN;
+import org.netbeans.api.annotations.common.CheckForNull;
 
 /**
  *
@@ -36,10 +36,11 @@ public interface NoExtMIMEResolverParser {
 
     Result getResult();
 
-    public interface Result {
+    public static interface Result {
 
-        MimeType getMimeType();
+        @CheckForNull
+        String getMimeType();
     }
 
-    public static Result UNKOWN_RESULT = () -> UNNKOWN;
+    public static Result UNKOWN_RESULT = () -> UNNKOWN.getMimeType();
 }

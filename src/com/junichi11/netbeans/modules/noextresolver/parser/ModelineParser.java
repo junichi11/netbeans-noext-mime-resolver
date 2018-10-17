@@ -77,8 +77,8 @@ public class ModelineParser implements NoExtMIMEResolverParser {
         }
 
         @Override
-        public MimeType getMimeType() {
-            return mimeType;
+        public String getMimeType() {
+            return mimeType.getMimeType();
         }
 
     }

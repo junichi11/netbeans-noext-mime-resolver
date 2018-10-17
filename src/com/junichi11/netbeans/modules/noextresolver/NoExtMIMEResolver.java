@@ -24,7 +24,6 @@
 package com.junichi11.netbeans.modules.noextresolver;
 
 import com.junichi11.netbeans.modules.noextresolver.api.MimeType;
-import static com.junichi11.netbeans.modules.noextresolver.api.MimeType.UNNKOWN;
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import java.io.IOException;
 import java.util.List;
@@ -64,8 +63,8 @@ public final class NoExtMIMEResolver extends MIMEResolver {
         List<NoExtMIMEResolverParser> parsers = ParserFactory.createParsers(firstLine);
         for (NoExtMIMEResolverParser parser : parsers) {
             NoExtMIMEResolverParser.Result result = parser.parse().getResult();
-            if (result.getMimeType() != UNNKOWN) {
-                return result.getMimeType().getMimeType();
+            if (result.getMimeType() != null) {
+                return result.getMimeType();
             }
         }
         return null;
