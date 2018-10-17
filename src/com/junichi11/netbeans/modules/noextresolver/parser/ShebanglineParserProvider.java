@@ -24,34 +24,21 @@
 package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParserProvider;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import org.openide.util.Lookup;
+import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import org.openide.util.lookup.ServiceProvider;
 import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
-/**
- *
- * @author junichi11
- */
-public final class ParserFactory {
+@ServiceProvider(service = NoExtMIMEResolverParserProvider.class, position = 100)
+public class ShebanglineParserProvider implements NoExtMIMEResolverParserProvider {
 
-    private ParserFactory() {
+    @Override
+    public boolean support(String line) {
+        return ShebangUtils.isShebang(line);
     }
 
-    public static List<NoExtMIMEResolverParser> createParsers(String line) {
-        List<NoExtMIMEResolverParser> parsers = new ArrayList<>();
-        Collection<? extends NoExtMIMEResolverParserProvider> providers = Lookup.getDefault().lookupAll(NoExtMIMEResolverParserProvider.class);
-        for (NoExtMIMEResolverParserProvider provider : providers) {
-            if (!provider.support(line)) {
-                continue;
-            }
-            NoExtMIMEResolverParser parser = provider.create(line);
-            if (parser == null) {
-                continue;
-            }
-            parsers.add(parser);
-        }
-        return parsers;
+    @Override
+    public NoExtMIMEResolverParser create(String line) {
+        return new ShebanglineParser(line);
     }
+
 }

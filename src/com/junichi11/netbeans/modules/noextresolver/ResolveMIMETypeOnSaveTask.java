@@ -24,7 +24,6 @@
 package com.junichi11.netbeans.modules.noextresolver;
 
 import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
-import com.junichi11.netbeans.modules.noextresolver.parser.Parser;
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
 import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
@@ -44,6 +43,7 @@ import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.RequestProcessor;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
 /**
  *
@@ -80,9 +80,9 @@ public class ResolveMIMETypeOnSaveTask implements OnSaveTask {
         }
 
         MimeType mimeType = UNNKOWN;
-        List<Parser> parsers = ParserFactory.createParsers(text);
-        for (Parser parser : parsers) {
-            Parser.Result result = parser.parse().getResult();
+        List<NoExtMIMEResolverParser> parsers = ParserFactory.createParsers(text);
+        for (NoExtMIMEResolverParser parser : parsers) {
+            NoExtMIMEResolverParser.Result result = parser.parse().getResult();
             if (result.getMimeType() != UNNKOWN) {
                 mimeType = result.getMimeType();
                 break;

@@ -21,25 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.junichi11.netbeans.modules.noextresolver.parser;
-
-import com.junichi11.netbeans.modules.noextresolver.MimeType;
-import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
+package com.junichi11.netbeans.modules.noextresolver.parser.spi;
 
 /**
  *
  * @author junichi11
  */
-public interface Parser {
+public interface NoExtMIMEResolverParserProvider {
 
-    Parser parse();
+    /**
+     * Check whether the first line can be parsed.
+     *
+     * @param line the fist line of the file
+     * @return {@code true} if parsing is possible, otherwise {@code false}
+     */
+    boolean support(String line);
 
-    Result getResult();
-
-    public interface Result {
-
-        MimeType getMimeType();
-    }
-
-    public static Result UNKOWN_RESULT = () -> UNNKOWN;
+    /**
+     * Create the parser.
+     *
+     * @param line the first line of the file
+     * @return the parser
+     */
+    NoExtMIMEResolverParser create(String line);
 }

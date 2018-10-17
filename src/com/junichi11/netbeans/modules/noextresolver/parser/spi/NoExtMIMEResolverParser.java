@@ -21,37 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.junichi11.netbeans.modules.noextresolver.parser;
+package com.junichi11.netbeans.modules.noextresolver.parser.spi;
 
-import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParserProvider;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import org.openide.util.Lookup;
-import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
+import com.junichi11.netbeans.modules.noextresolver.MimeType;
+import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
 
 /**
  *
  * @author junichi11
  */
-public final class ParserFactory {
+public interface NoExtMIMEResolverParser {
 
-    private ParserFactory() {
+    NoExtMIMEResolverParser parse();
+
+    Result getResult();
+
+    public interface Result {
+
+        MimeType getMimeType();
     }
 
-    public static List<NoExtMIMEResolverParser> createParsers(String line) {
-        List<NoExtMIMEResolverParser> parsers = new ArrayList<>();
-        Collection<? extends NoExtMIMEResolverParserProvider> providers = Lookup.getDefault().lookupAll(NoExtMIMEResolverParserProvider.class);
-        for (NoExtMIMEResolverParserProvider provider : providers) {
-            if (!provider.support(line)) {
-                continue;
-            }
-            NoExtMIMEResolverParser parser = provider.create(line);
-            if (parser == null) {
-                continue;
-            }
-            parsers.add(parser);
-        }
-        return parsers;
-    }
+    public static Result UNKOWN_RESULT = () -> UNNKOWN;
 }

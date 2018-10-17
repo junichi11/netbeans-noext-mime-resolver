@@ -24,7 +24,6 @@
 package com.junichi11.netbeans.modules.noextresolver;
 
 import static com.junichi11.netbeans.modules.noextresolver.MimeType.UNNKOWN;
-import com.junichi11.netbeans.modules.noextresolver.parser.Parser;
 import com.junichi11.netbeans.modules.noextresolver.parser.ParserFactory;
 import java.io.IOException;
 import java.util.List;
@@ -33,6 +32,7 @@ import java.util.logging.Logger;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.MIMEResolver;
 import org.openide.util.lookup.ServiceProvider;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
 /**
  * MIMEResolver for no extension file.
@@ -60,9 +60,9 @@ public final class NoExtMIMEResolver extends MIMEResolver {
         }
 
         String firstLine = getFirstLine(fo);
-        List<Parser> parsers = ParserFactory.createParsers(firstLine);
-        for (Parser parser : parsers) {
-            Parser.Result result = parser.parse().getResult();
+        List<NoExtMIMEResolverParser> parsers = ParserFactory.createParsers(firstLine);
+        for (NoExtMIMEResolverParser parser : parsers) {
+            NoExtMIMEResolverParser.Result result = parser.parse().getResult();
             if (result.getMimeType() != UNNKOWN) {
                 return result.getMimeType().getMimeType();
             }

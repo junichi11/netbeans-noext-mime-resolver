@@ -25,8 +25,9 @@ package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.MimeType;
 import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
-public class ModelineParser implements Parser {
+public class ModelineParser implements NoExtMIMEResolverParser {
 
     private final String modeline;
     private String fileType;
@@ -57,7 +58,7 @@ public class ModelineParser implements Parser {
     @Override
     public Result getResult() {
         if (fileType == null) {
-            return Parser.UNKOWN_RESULT;
+            return NoExtMIMEResolverParser.UNKOWN_RESULT;
         }
         return new ModelineResult(MimeType.valueOfFileType(fileType));
     }

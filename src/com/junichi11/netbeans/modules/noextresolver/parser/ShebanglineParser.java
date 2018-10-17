@@ -25,8 +25,9 @@ package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.MimeType;
 import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
+import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
-public class ShebanglineParser implements Parser {
+public class ShebanglineParser implements NoExtMIMEResolverParser {
 
     private final String shebanline;
     private String fileType;
@@ -49,7 +50,7 @@ public class ShebanglineParser implements Parser {
     @Override
     public Result getResult() {
         if (fileType == null) {
-            return Parser.UNKOWN_RESULT;
+            return NoExtMIMEResolverParser.UNKOWN_RESULT;
         }
         return new ShebanglineResult(MimeType.valueOfFileType(fileType));
     }
