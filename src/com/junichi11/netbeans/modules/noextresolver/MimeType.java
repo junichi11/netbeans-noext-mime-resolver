@@ -82,7 +82,7 @@ public enum MimeType {
         return mimeType;
     }
 
-    public static MimeType valueOfInterpreter(String fileType) {
+    public static MimeType valueOfFileType(String fileType) {
         MimeType mime = TYPES.get(fileType);
         if (mime == null) {
             mime = UNNKOWN;

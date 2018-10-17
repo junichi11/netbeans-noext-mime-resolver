@@ -24,7 +24,6 @@
 package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.MimeType;
-import static com.junichi11.netbeans.modules.noextresolver.MimeType.valueOfInterpreter;
 import com.junichi11.netbeans.modules.noextresolver.utils.Utils;
 
 public class ModelineParser implements Parser {
@@ -60,7 +59,7 @@ public class ModelineParser implements Parser {
         if (fileType == null) {
             return Parser.UNKOWN_RESULT;
         }
-        return new ModelineResult(valueOfInterpreter(fileType));
+        return new ModelineResult(MimeType.valueOfFileType(fileType));
     }
 
     private static boolean isFileTypeOption(String option) {

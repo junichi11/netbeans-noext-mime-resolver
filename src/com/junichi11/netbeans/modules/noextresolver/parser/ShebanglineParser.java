@@ -51,7 +51,7 @@ public class ShebanglineParser implements Parser {
         if (fileType == null) {
             return Parser.UNKOWN_RESULT;
         }
-        return new ShebanglineResult(MimeType.valueOfInterpreter(fileType));
+        return new ShebanglineResult(MimeType.valueOfFileType(fileType));
     }
 
     private static class ShebanglineResult implements Result {
