@@ -47,6 +47,10 @@ public class ShebanglineParser implements NoExtMIMEResolverParser {
         return this;
     }
 
+    static boolean support(String line) {
+        return ShebangUtils.isShebang(line);
+    }
+
     @Override
     public Result getResult() {
         if (fileType == null) {

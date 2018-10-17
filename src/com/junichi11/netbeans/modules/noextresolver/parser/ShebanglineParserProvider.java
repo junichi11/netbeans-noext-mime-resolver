@@ -24,7 +24,6 @@
 package com.junichi11.netbeans.modules.noextresolver.parser;
 
 import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParserProvider;
-import com.junichi11.netbeans.modules.noextresolver.utils.ShebangUtils;
 import org.openide.util.lookup.ServiceProvider;
 import com.junichi11.netbeans.modules.noextresolver.parser.spi.NoExtMIMEResolverParser;
 
@@ -33,7 +32,7 @@ public class ShebanglineParserProvider implements NoExtMIMEResolverParserProvide
 
     @Override
     public boolean support(String line) {
-        return ShebangUtils.isShebang(line);
+        return ShebanglineParser.support(line);
     }
 
     @Override

@@ -33,6 +33,9 @@ public class ModelineParser implements NoExtMIMEResolverParser {
     private String fileType;
     private static final String FILE_TYPE_OPTION_LONG = "filetype="; // NOI18N
     private static final String FILE_TYPE_OPTION = "ft="; // NOI18N
+    private static final String VI = "vi:";
+    private static final String VIM = "vim:";
+    private static final String EX = "ex:";
 
     public ModelineParser(String modeline) {
         assert modeline != null;
@@ -66,6 +69,11 @@ public class ModelineParser implements NoExtMIMEResolverParser {
     private static boolean isFileTypeOption(String option) {
         return option.startsWith(FILE_TYPE_OPTION)
                 || option.startsWith(FILE_TYPE_OPTION_LONG);
+    }
+
+    static boolean support(String line) {
+        return Utils.isCommentLine(line)
+                && (line.contains(VIM) || line.contains(VI) || line.contains(EX));
     }
 
     private static class ModelineResult implements Result {
