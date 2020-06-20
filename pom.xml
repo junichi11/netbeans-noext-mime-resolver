@@ -4,7 +4,7 @@
     <groupId>com.junichi11.netbeans.modules</groupId>
     <artifactId>netbeans-noext-mime-resolver</artifactId>
     <!-- change the version of build.xml -->
-    <version>0.11.0</version>
+    <version>0.12.0</version>
     <packaging>nbm</packaging>
     <name>NetBeans No Extension MIME Resolver Plugin</name>
     <url>https://github.com/junichi11/</url>
