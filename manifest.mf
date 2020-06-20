@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 OpenIDE-Module: com.junichi11.netbeans.modules.noextresolver
 OpenIDE-Module-Localizing-Bundle: com/junichi11/netbeans/modules/noextresolver/Bundle.properties
-OpenIDE-Module-Specification-Version: 0.11.0
+OpenIDE-Module-Specification-Version: 0.12.0
