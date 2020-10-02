@@ -83,6 +83,18 @@ public class NoExtMIMEResolverShebangLineTest extends NoExtMIMEResolverTestBase 
         findMimeType(MimeType.GROOVY, "groovy_02");
     }
 
+    public void testPHP_01a() {
+        findMimeType(MimeType.PHP, "php_01a");
+    }
+
+    public void testPHP_01b() {
+        findMimeType(MimeType.PHP, "php_01b");
+    }
+
+    public void testPHP_02() {
+        findMimeType(MimeType.PHP, "php_02");
+    }
+
     public void testUnsupported_01() {
         findMimeType(null, "unsupported");
     }

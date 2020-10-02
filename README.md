@@ -15,24 +15,32 @@ Return a proper mime type from a shebang line or modeline of a file if the file 
 
 ```
 // vi:set ft=cpp:
+// vim:set filetype=cpp:
 /* vi:set filetype=cpp: */
 ```
 
 ## Supported type
 
-- sh (text/sh)
 - bash (text/sh)
-- ruby (text/x-ruby)
-- python (text/x-python)
-- perl (text/x-perl)
-- js (text/javascript)
-- javascript (text/javascript)
-- node (text/javascript)
-- groovy (text/x-groovy)
 - c (text/x-c)
 - cpp (text/x-c++)
+- groovy (text/x-groovy)
+- javascript (text/javascript)
+- js (text/javascript)
+- node (text/javascript)
+- perl (text/x-perl)
+- php (text/x-php5)
+- python (text/x-python)
+- ruby (text/x-ruby)
+- sh (text/sh)
 
 If you have some requests, please submit them to the github repository as new [issues](https://github.com/junichi11/netbeans-noext-mime-resolver/issues).
+
+## Contributions
+
+- If you come across typos, please feel free to create a PR
+- Other than that, please ask before creating Pull Requests
+- Please create a PR against not the `master` but the latest version(e.g. `nb120`) branch
 
 ## Note
 
