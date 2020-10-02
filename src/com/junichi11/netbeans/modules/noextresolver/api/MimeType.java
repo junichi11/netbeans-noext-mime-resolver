@@ -41,6 +41,7 @@ public enum MimeType {
     GROOVY("text/x-groovy"), // NOI18N
     C("text/x-c"), // NOI18N
     CPP("text/x-c++"), // NOI18N
+    PHP("text/x-php5"), // NOI18N
     UNNKOWN(null), // NOI18N
     ;
 
@@ -55,6 +56,7 @@ public enum MimeType {
         GROOVY.getMimeType(),
         C.getMimeType(),
         CPP.getMimeType(),
+        PHP.getMimeType(),
     };
 
     static {
@@ -71,6 +73,7 @@ public enum MimeType {
         TYPES.put("javascript", JS); // NOI18N
         TYPES.put("c", C); // NOI18N
         TYPES.put("cpp", CPP); // NOI18N
+        TYPES.put("php", PHP); // NOI18N
     }
 
     private MimeType(String mimeType) {

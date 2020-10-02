@@ -59,6 +59,14 @@ public class NoExtMIMEResolverModelineTest extends NoExtMIMEResolverTestBase {
         findMimeType(MimeType.CPP, "cpp_multiline_comment");
     }
 
+    public void testPHP_01() {
+        findMimeType(MimeType.PHP, "php_01");
+    }
+
+    public void testPHP_02() {
+        findMimeType(MimeType.PHP, "php_02");
+    }
+
     public void testUnsupported() {
         findMimeType(null, "unsupported");
     }
